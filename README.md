@@ -23,7 +23,7 @@ https://udagawamac.github.io/kadai02_janken_rich/
 - [tips] 
 
 ## [参考記事]
-遅延実行
-- https://qiita.com/tatsukikane/items/d8486cdb6674c1406e53
-要素を点滅させる
-- https://noveblo.com/javascript-css-blink/#jump01
+- 遅延実行
+  https://qiita.com/tatsukikane/items/d8486cdb6674c1406e53
+- 要素を点滅させる
+  https://noveblo.com/javascript-css-blink/#jump01
