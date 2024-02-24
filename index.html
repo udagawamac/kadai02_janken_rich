@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" href="css/TW_janken_rich.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="./img/choki.png">
+    <title>じゃんけんアプリ リッチver</title>
+    <style>
+        .hidden{
+           visibility: hidden;
+        }        
+    </style>
+</head>
+
+<body class="text-center bg-orange-100 text-red-800">
+  <header class="text-6xl">
+    <h1 class="m-5 font-bold">じゃんけん勝負！</h1>
+  </header>
+  <main class="text-5xl">
+    <div><img src="./img/kitsune_omen.png" alt="" class="w-72 flex justify-center m-auto"></div>
+    <ul id=comp class="-rotate-180 flex gap-8 justify-center m-5">
+        <li id="pa"><img src="./img/pa.png" alt="" class="w-52 rounded-3xl"></li>
+        <li id="cho"><img src="./img/choki.png" alt="" class="w-52 rounded-3xl"></li>
+        <li id="gu"><img src="./img/gu.png" alt="" class="w-52 rounded-3xl"></li>
+    </ul>
+    <p id="question" class="font-bold p-8 text-red-400">どれを出す？<br>↓　↓　↓</p>
+    <ul id=you class="flex justify-center gap-8 cursor-pointer">
+         <li id="gu_btn"><img src="./img/gu.png" alt="" class="w-52 rounded-3xl bg-orange-300"></li>
+         <li id="cho_btn"><img src="./img/choki.png" alt="" class="w-52 rounded-3xl"></li>
+         <li id="pa_btn"><img src="./img/pa.png" alt="" class="w-52 rounded-3xl"></li>
+    </ul>
+    <div id="judgment" class="font-bold p-16"></div>
+    <audio src="./sound/draw.mp3" id="play_sound"></audio>
+    <audio src="./sound/lose.mp3" id="play_sound_lose"></audio>
+    <audio src="./sound/win.mp3" id="play_sound_win"></audio>
+  </main>
+
+  <script>
+    // あなたがグーを出した場合
+        $("#gu_btn").on("click",function(){
+            // クリックして1秒後にリセット
+            setTimeout(function(){
+                location.reload();
+            },1000);
+            // どれを出す？を消す
+            $("#question").addClass("hidden");
+            //1.乱数
+            const r=Math.ceil(Math.random()*3);
+            // 2.if分岐処理（3:グー、2:チョキ、1:パー）
+            let append="";
+            if(r==3){
+                $("#cho").addClass("hidden");
+                $("#pa").addClass("hidden");
+                $("#play_sound").get(0).play();
+                append='あいこ  もういちど';
+            }else if(r==2){
+                $("#gu").addClass("hidden")
+                $("#pa").addClass("hidden")
+                $("#play_sound_win").get(0).play()
+                append='やったね！あなたの勝ち';
+            }else{
+                $("#gu").addClass("hidden");
+                $("#cho").addClass("hidden");
+                $("#play_sound_lose").get(0).play();
+                append='残念！あなたの負け';
+            }
+            // 3.表示処理
+            $("#judgment").html(append);
+            $("#cho_btn").addClass("hidden");
+            $("#pa_btn").addClass("hidden");
+        });
+// あなたがチョキを出した場合
+        $("#cho_btn").on("click",function(){
+            // クリックして1秒後にリセット
+            setTimeout(function(){
+            location.reload();
+            },1000);
+            $("#question").addClass("hidden");
+            //1.乱数
+            const r=Math.ceil(Math.random()*3);
+            // 2.if分岐処理（3:グー、2:チョキ、1:パー）
+            let append="";
+            if(r==3){
+                $("#cho").addClass("hidden");
+                $("#pa").addClass("hidden");
+                $("#play_sound_lose").get(0).play();
+                append='残念！あなたの負け';
+            }else if(r==2){
+                $("#gu").addClass("hidden")
+                $("#pa").addClass("hidden")
+                $("#play_sound").get(0).play()
+                append='あいこ  もういちど';
+            }else{
+                $("#gu").addClass("hidden");
+                $("#cho").addClass("hidden");
+                $("#play_sound_win").get(0).play();
+                append='やったね！あなたの勝ち';
+            }
+            // 3.表示処理
+            $("#judgment").html(append);
+            $("#gu_btn").addClass("hidden");
+            $("#pa_btn").addClass("hidden");
+        });
+// あなたがパーを出した場合
+      $("#pa_btn").on("click",function(){
+            // クリックして1秒後にリセット
+            setTimeout(function(){
+            location.reload();
+            },1000);
+            $("#question").addClass("hidden");
+            //1.乱数
+            const r=Math.ceil(Math.random()*3);
+            // 2.if分岐処理（3:グー、2:チョキ、1:パー）
+            let append="";
+            if(r==3){
+                $("#cho").addClass("hidden");
+                $("#pa").addClass("hidden");
+                $("#play_sound_win").get(0).play();
+                append='やったね！あなたの勝ち';
+            }else if(r==2){
+                $("#gu").addClass("hidden")
+                $("#pa").addClass("hidden")
+                $("#play_sound_lose").get(0).play()
+                append='残念！あなたの負け';
+            }else{
+                $("#gu").addClass("hidden");
+                $("#cho").addClass("hidden");
+                $("#play_sound").get(0).play();
+                append='あいこ  もういちど';
+            }
+            // 3.表示処理
+            $("#judgment").html(append);
+            $("#gu_btn").addClass("hidden");
+            $("#cho_btn").addClass("hidden");
+        });
+  </script>
+</body>
+</html>

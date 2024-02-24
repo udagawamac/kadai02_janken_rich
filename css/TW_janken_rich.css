@@ -1,0 +1,27 @@
+p{
+    -webkit-animation:blink .5s ease-in-out infinite alternate;
+    -moz-animation:blink .5s ease-in-out infinite alternate;
+    animation:blink .5s ease-in-out infinite alternate;
+}
+@-webkit-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-moz-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+#you img{
+    margin-left: 6px;
+    margin-top: 6px;
+}
+#you li:hover{
+    width: 220px;
+    height: 220px;
+    border-radius: 20px;
+    background-color: lightsalmon;
+}
